@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an order</title>
+    <link href="css/theme.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        body{
+            background-image: url('images/gallery/bg2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container-create{
+            border-radius: 70px;
+            backdrop-filter: blur(150px);
+            height: 1500px;
+            margin-left: 80px;
+            margin-right: 80px;
+            padding: 50px;
+        }
+    </style>
+
+
+    <script>
+            function Validation() {
+                var requesterMob = document.forms["CreateOrder"]["requesterMob"];
+                var pickupMob = document.forms["CreateOrder"]["pickupMob"];
+                var deliveryMob = document.forms["CreateOrder"]["deliveryMob"];
+
+
+                if (!requesterMob.value.match(/^[1-9][0-9]{9}$/)) {
+                    window.alert(
+                      "Mobule number must be 10 characters long number and first digit can't be 0!");
+                    requesterMob.focus();
+                    return false;
+                }
+
+                if (!pickupMob.value.match(/^[1-9][0-9]{9}$/)) {
+                    window.alert(
+                      "Mobile number must be 10 characters long number and first digit can't be 0!");
+                    pickupMob.focus();
+                    return false;
+                }
+
+                if (!deliveryMob.value.match(/^[1-9][0-9]{9}$/)) {
+                    window.alert(
+                      "Mobile number must be 10 characters long number and first digit can't be 0!");
+                    deliveryMob.focus();
+                    return false;
+                }
+            }
+
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" href="#"><img src="images/gallery/logo4.png" height="45" alt="logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="/"><ul></ul>Logout</ul></a></li>
+            </ul>
+            
+            
+          </div>
+        </div>
+      </nav>
+
+    <section style="margin-left: 100px; margin-right: 100px;">
+        <br>
+
+    <div class="container-create">
+
+    <h4>Create a new order:</h4>
+    <br>
+
+    
+    <form name="CreateOrder" action="/create" method="POST" onsubmit="return Validation()">
+                <div class="form-group">
+                    <label for="requesterName">Name of Requester:</label>
+                    <input type="text" class="form-control" id="requesterName" name="requesterName"  placeholder="Enter name" required="required">
+                </div><br>
+                <div class="form-group">
+                    <label for="requesterEmail">Email ID of Requester:</label>
+                    <input type="email" class="form-control" id="requesterEmail" name="requesterEmail" placeholder="Eg: abc@gmail.com" required="required">
+                </div><br>
+
+                <div class="form-group">
+                    <label for="requesterMob">Mobile No of Requester:</label>
+                    <input type="text" class="form-control" id="requesterMob" name="requesterMob"  placeholder="XXXXXXXXXX" required="required">
+                </div><br>
+                <br><br>
+
+                <h4>Item Details</h4>
+                <div class="form-group">
+                    <label for="weight">Weight of Package (in kgs):</label>
+                    <input type="number" class="form-control" id="weight" name="weight" min=0 required="required">
+                </div><br>
+
+                <div class="form-group">
+                    <label for="">Value of the Package (in Rupees):</label>
+                    <input type="number" class="form-control" id="value" name="value" min=0 required="required">
+                </div>
+                <br><br>
+
+                <h4>Pick Up Details:</h4>
+                <div class="form-group">
+                    <label for="pickupName">Name:</label>
+                    <input type="text" class="form-control" id="pickupName" name="pickupName"  placeholder="Enter name of the person from whom the order is to be picked up" required="required">
+                </div><br>
+
+                <div class="form-group">
+                    <label for="pickupMob">Mobile No:</label>
+                    <input type="text" class="form-control" id="pickupMob" name="pickupMob"  placeholder="XXXXXXXXXX" required="required">
+                </div><br>
+
+                <div class="form-group">
+                    <label for="pickupAddress">Pick Up Address:</label>
+                    <input type="text" class="form-control" id="pickupAddress" name="pickupAddress"  placeholder="Enter Complete Adress with Pincode" required="required">
+                </div>
+                <br><br>
+
+                <h4>Delivery Details:</h4>
+                <div class="form-group">
+                    <label for="deliveryName">Name:</label>
+                    <input type="text" class="form-control" id="deliveryName" name="deliveryName"  placeholder="Enter name of the recipient" required="required">
+                </div><br>
+
+                <div class="form-group">
+                    <label for="deliveryMob">Mobile No:</label>
+                    <input type="text" class="form-control" id="deliveryMob" name="deliveryMob"  placeholder="XXXXXXXXXX" required="required">
+                </div><br>
+
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address:</label>
+                    <input type="text" class="form-control" id="deliveryAddress" name="deliveryAddress"  placeholder="Enter Complete Address with Pincode" required="required">
+                </div>
+
+                <br>
+                <br>
+                
+                <div class="form-group">
+                    <label for="status">Status:</label><br>
+                    <select id="status" name="status"  style="height: 50px; width: 200px" required="required">
+                        <option name="accepted" value="Order Accepted">Order Accepted</option>
+                        <option name="pickedup" value="Picked Up">Picked Up</option>
+                        <option name="shipped" value="Shipped">Shipped</option>
+                        <option name="intransit" value="In Transit">In Transit</option>
+                        <option name="arrived" value="Arrived at Destination">Arrived at Destination</option>
+                        <option name="outfordelivery" value="Out For Delivery">Out For Delivery</option>
+                        <option name="delivered" value="Delivered">Delivered</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+
+
+                <button type="submit" class="btn btn-primary">Create</button>  
+    </form>
+    </div>
+
+
+    </section>
+
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

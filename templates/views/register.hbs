@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/signin.css">
+
+    <style>
+        body{
+            background-color: #fbceb1;
+        }
+
+    </style>
+
+    <script>
+            function Validation() {
+                var name = 
+                    document.forms["RegForm"]["Name"];
+                var email = 
+                    document.forms["RegForm"]["EMail"];
+                var phone = 
+                    document.forms["RegForm"]["Phone"];
+                var password = 
+                    document.forms["RegForm"]["Password"];
+                
+  
+                if (name.value == "") {
+                    window.alert("Please enter your name.");
+                    name.focus();
+                    return false;
+                }
+
+                
+                if (!email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+                    window.alert(
+                      "Please enter a valid e-mail address.");
+                    email.focus();
+                    return false;
+                }
+  
+                if (!phone.value.match(/^[1-9][0-9]{9}$/)) {
+                    window.alert(
+                      "Phone number must be 10 characters long number and first digit can't be 0!");
+                    phone.focus();
+                    return false;
+                }
+  
+                if (!password.value.match(/^.{5,15}$/)) {
+                    window.alert("Password length must be between 5-15 characters!");
+                    password.focus();
+                    return false;
+                }
+  
+                return true;
+            }
+  
+        </script>
+</head>
+<body>
+    <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <div class="brand-wrapper">
+                        <img src="images/gallery/logo4.png" alt="logo" class="logo">
+                        </div>
+                        <h2 class="form-title">Sign up</h2>
+
+                       
+            <form name="RegForm" action="/register"  onsubmit="return Validation()" method="POST">
+            <p>Name: <input type="text" 
+                            size="65" name="Name" /></p>
+            <br />
+            <p>E-mail Address: <input type="text" 
+                            size="65" name="EMail" /></p>
+            <br />
+            <p>Password: <input type="password" 
+                         size="65" name="Password" /></p>
+            <br />
+            <p>Mobile No: <input type="text" 
+                        size="65" name="Phone" /></p>
+            <br />
+  
+                <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+            </p>
+        </form>
+                       
+                      
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="images/gallery/signup.jpg" alt="sign up image"></figure>
+                        <a href="/login" class="signup-image-link">Already a member? Click here to log in.</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>
+</body>
+</html>

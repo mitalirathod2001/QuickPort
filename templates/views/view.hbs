@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Orders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="css/theme.css" rel="stylesheet" />
+
+    <style>
+        body{
+            background-image: url('images/gallery/bg2.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .xyz{
+            font-size: 15px;
+            color: black;
+        }
+
+        td, th { 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            word-wrap: break-word;
+        }
+
+        table, th, td, tbody, thead {
+            border: 1px solid black;
+         }
+    </style>
+    </head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" href="#"><img src="images/gallery/logo4.png" height="45" alt="logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
+              <li class="nav-item px-2"><a class="nav-link" aria-current="page" href="/"><div class="xyz">Logout</div></a></li>
+            </ul>
+            
+            
+          </div>
+        </div>
+      </nav>
+      <br><br>
+
+      <section style="margin-top: 20px; margin-left: 50px; margin-right: 50px;">
+        <h1>Filter Orders</h1>
+                <div class="col-md-12">
+                    <form action="/search" id="filterForm" class="form-horizontal" method="post"  role="form">
+                                
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="name" class="col-md-12 control-label">By Name of Requester</label>
+                        <div class="col-md-12">
+                            <input type="text" id="searchName" class="form-control" name="fltrname" placeholder="Enter Name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="email" class="col-md-12 control-label">By Email of Requester</label>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="fltremail" placeholder="Enter Email">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="email" class="col-md-12 control-label">&nbsp;</label>
+                        
+                        <div class="col-md-12">
+                            <input type="submit" class="form-control btn btn-primary" name="submit" placeholder="Filter">
+                        </div>
+                    </div>
+                </div>
+            </form>
+                </div>
+                    </div>
+                    </div>
+        </section>
+
+    <section style="margin-left: 50px; margin-right: 50px;">
+        <h1>All Orders:</h1>
+        <br>
+        <table class="table" style="font-size: 15px; text-align: center;">
+            <thead>
+                <tr>
+                <th scope="col">Name of Requester</th>
+                <th scope="col">Email of Requester</th>
+                <th scope="col">Mobile No</th>
+                <th scope="col">Package Weight (in kgs)</th>
+                <th scope="col">Package Value (in Rs)</th>
+                <th scope="col">Sender Name</th>
+                <th scope="col">Sender Mob No</th>
+                <th scope="col">Sender Address</th>
+                <th scope="col">Receiver Name</th>
+                <th scope="col">Receiver Mob No</th>
+                <th scope="col">Receiver Address</th>
+                <th scope="col">Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each ordersList}}
+                <tr>
+                <td>{{this.requesterName}}</td>
+                <td>{{this.requesterEmail}}</td>
+                <td>{{this.requesterMob}}</td>
+                <td>{{this.weight}}</td>
+                <td>{{this.value}}</td>
+                <td>{{this.pickupName}}</td>
+                <td>{{this.pickupMob}}</td>
+                <td>{{this.pickupAddress}}</td>
+                <td>{{this.deliveryName}}</td>
+                <td>{{this.deliveryMob}}</td>
+                <td>{{this.deliveryAddress}}</td>
+                <td>{{this.status}}</td>
+                </tr>
+                {{/each}}
+                
+            </tbody>
+            </table>
+
+        
+    </section>
+</body>
+</html>
